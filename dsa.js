@@ -1,13 +1,9 @@
-// reverseCase("Happy Birthday") ➞ "hAPPY bIRTHDAY"
+//valid palindrome`
 
-function reverseCase(x) {
-    // Example 1:
+var isPalindrome = function (s) {
+  let str = s.toLowerCase().replace(/[^a-zA-Z0-9]/g, "");
+  let revStr = str.split("").reverse().join("");
+  return str === revStr;
+};
 
-    // Input: x = 121
-    // Output: true
-    let num = x.toString().split("").reverse().join("");
-    let revNum = parseInt(num);
-
-    return revNum == x ? true : false;
-}
-console.log(reverseCase(123));
+console.log(isPalindrome("A man, a plan, a canal: Panama"));
