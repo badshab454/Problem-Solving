@@ -1,9 +1,13 @@
-//valid palindrome`
+//Count of camel case characters
 
 var isPalindrome = function (s) {
-  let str = s.toLowerCase().replace(/[^a-zA-Z0-9]/g, "");
-  let revStr = str.split("").reverse().join("");
-  return str === revStr;
+  let result = "";
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] == s[i].toUpperCase()) {
+      result += s[i];
+    }
+  }
+  return result.length;
 };
 
-console.log(isPalindrome("A man, a plan, a canal: Panama"));
+console.log(isPalindrome("AbdBCc"));
