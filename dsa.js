@@ -1,13 +1,17 @@
-//Count of camel case characters
+//is same for last number
 
-var isPalindrome = function (s) {
-  let result = "";
+function isSame(s) {
+  //code here
+  let str = "";
+  let numStr = "";
   for (let i = 0; i < s.length; i++) {
-    if (s[i] == s[i].toUpperCase()) {
-      result += s[i];
+    if (!isNaN(s[i])) {
+      numStr += s[i];
+    } else {
+      str += s[i];
     }
   }
-  return result.length;
-};
+  return parseInt(numStr) == str.length ? 1 : 0;
+}
 
-console.log(isPalindrome("AbdBCc"));
+console.log(isSame("gypgqgraaaa011"));
