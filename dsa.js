@@ -1,26 +1,30 @@
-// First and last occurrences of X
+// // Array Subset of another array
+
+// Given two arrays: a1[0..n-1] of size n and a2[0..m-1] of size m, where both arrays may contain duplicate elements. The task is to determine whether array a2 is a subset of array a1. It's important to note that both arrays can be sorted or unsorted. Additionally, each occurrence of a duplicate element within an array is considered as a separate element of the set.
+
 // Example 1:
 
 // Input:
-// N = 4 , X = 3
-// arr[] = { 1, 3, 3, 4 }
+// a1[] = {11, 7, 1, 13, 21, 3, 7, 3}
+// a2[] = {11, 3, 7, 1, 7}
 // Output:
-// 1 2
+// Yes
 // Explanation:
-// For the above array, first occurence
-// of X = 3 is at index = 1 and last
-// occurence is at index = 2.
+// a2[] is a subset of a1[]
 
-function firstAndLast(arr, N, X) {
-  //your code here
-  let firstIndex = arr.indexOf(X);
-  let lastIndex = arr.lastIndexOf(X);
-
-  if(firstIndex == -1 || lastIndex == -1) {
-    return [-1]
+function isSubset(a1, a2, n, m) {
+  //code here
+  const map = new Map();
+  for (let num of a1) {
+    map.set(num, (map.get(num) || 0) + 1);
   }
-
-  return [firstIndex, lastIndex];
+  for (let num of a2) {
+    if (!map.has(num) || map.get(num) === 0) {
+      return "No";
+    }
+    map.set(num, map.get(num) - 1);
+  }
+  return "Yes"
 }
 
-console.log(firstAndLast([0, 0, 0, 0, 1, 1, 1, 1], 8, 3));
+console.log(isSubset([484, 595, 9595, 959, 5985], [959, 5985], 5, 2));
