@@ -1,28 +1,26 @@
-// Remove character
-// string1 = "computer"
-// string2 = "cat"
-// Output: "ompuer"
-// Explanation: After removing characters(c, a, t)
-// from string1 we get "ompuer".
+// First and last occurrences of X
+// Example 1:
 
-// let result = '';
-//     for (let i = 0; i < str1.length; i++) {
-//         if (!str2.includes(str1[i])) {
-//             result += str1[i];
-//         }
-//     }
-//     return result;
+// Input:
+// N = 4 , X = 3
+// arr[] = { 1, 3, 3, 4 }
+// Output:
+// 1 2
+// Explanation:
+// For the above array, first occurence
+// of X = 3 is at index = 1 and last
+// occurence is at index = 2.
 
-function removeChars(s1, s2){
-  //code here
-  let result = '';
-  for (let i = 0; i < s1.length; i++){
-    if (!s2.includes(s1[i])){
-      result += s1[i];
-    }
+function firstAndLast(arr, N, X) {
+  //your code here
+  let firstIndex = arr.indexOf(X);
+  let lastIndex = arr.lastIndexOf(X);
+
+  if(firstIndex == -1 || lastIndex == -1) {
+    return [-1]
   }
-  return result;
+
+  return [firstIndex, lastIndex];
 }
 
-console.log(removeChars("computer", "cat"));
-
+console.log(firstAndLast([0, 0, 0, 0, 1, 1, 1, 1], 8, 3));
