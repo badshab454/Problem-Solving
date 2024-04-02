@@ -1,8 +1,9 @@
-function isPerfect(n, arr) {
-  // code here
-  let num = arr.join('');
-  let reversedNum = arr.reverse().join('');
-  return reversedNum === num;
+function birdsInWeek(birdsPerDay, week) {
+  var result = 0;
+  for (let i = ((week * 7) - 7); i < week*7; i++){
+    result += birdsPerDay[i];
+  }
+  return result;
 }
 
-console.log(isPerfect(5, [1, 2, 3, 2, 1]));
+console.log(birdsInWeek([3, 0, 5, 1, 0, 4, 1, 0, 3, 4, 3, 0, 8, 0], 1));
