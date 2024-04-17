@@ -1,9 +1,12 @@
-function birdsInWeek(birdsPerDay, week) {
-  var result = 0;
-  for (let i = ((week * 7) - 7); i < week*7; i++){
-    result += birdsPerDay[i];
-  }
-  return result;
+//Reverse words in a given string
+
+//vvvvvvvInput:
+// S = i.like.this.program.very.much
+// Output: much.very.program.this.like.i
+
+function reverseWords(s) {
+  // code here
+  return s.split('.').reverse().join(".");
 }
 
-console.log(birdsInWeek([3, 0, 5, 1, 0, 4, 1, 0, 3, 4, 3, 0, 8, 0], 1));
+console.log(reverseWords("i.like.this.program.very.much"));
