@@ -1,8 +1,21 @@
-function plusOne(digits) {
-    let num = BigInt(digits.join(''));
-    num = num + BigInt(1);
-    let result = num.toString().split("")
-    return result;
+// 9. Palindrome Number
+
+// Given an integer x, return true if x is a 
+// palindrome
+// , and false otherwise.
+
+ 
+
+// Example 1:`
+
+// Input: x = 121
+// Output: true
+// Explanation: 121 reads as 121 from left to right and from right to left.
+
+function isPalindrome (x) {
+    let arr = x.toString().split('').reverse().join('')
+    let revNum = parseInt(arr);
+    return x == revNum;
 }
 
-console.log(plusOne([6,1,4,5,3,9,0,1,9,5,1,8,6,7,0,5,5,4,3]));
+console.log(isPalindrome(123));
