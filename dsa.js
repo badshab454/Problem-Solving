@@ -1,24 +1,24 @@
-// 1281. Subtract the Product and Sum of Digits of an Integer
+// Given two strings s and t, return true if t is an anagram of s, and false otherwise.
 
-// Given an integer number n, return the difference between the product of its digits and the sum of its digits.
+// An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+
  
 
 // Example 1:
 
-// Input: n = 234
-// Output: 15 
-// Explanation: 
-// Product of digits = 2 * 3 * 4 = 24 
-// Sum of digits = 2 + 3 + 4 = 9 
-// Result = 24 - 9 = 15
+// Input: s = "anagram", t = "nagaram"
+// Output: true
+// Example 2:
 
-var subtractProductAndSum = function(n) {
-    n = n.toString().split('');
-
-    let product = n.reduce((accu, curr) => accu * curr);
-    let sum = n.reduce((accu, curr) => accu + Number(curr), 0);
-    
-    return product - sum;
+// Input: s = "rat", t = "car"
+// Output: false
+var isAnagram = function(s, t) {
+    s = s.split('').sort((a, b) => a.localeCompare(b)).join('');
+    t = t.split('').sort((a, b) => a.localeCompare(b)).join('');
+    return s == t;
 };
 
-console.log(subtractProductAndSum(234));
+console.log(isAnagram('anagram', 'nagaam'));
+
+
+
