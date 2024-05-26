@@ -1,20 +1,31 @@
-// 557. Reverse Words in a String III
-// Given a string s, reverse the order of characters in each word within a sentence while still preserving whitespace and initial word order.
-// Example 1:
-// Input: s = "Let's take LeetCode contest"
-// Output: "s'teL ekat edoCteeL tsetnoc"
-// Example 2:
-// nput: s = "Mr Ding"
-// Output: "rM gniD"
-// Constraints:
-// 1 <= s.length <= 5 * 104
-// s contains printable ASCII characters.
-// s does not contain any leading or trailing spaces.
-// There is at least one word in s.
-// All the words in s are separated by a single space.
+function rearrange (arr, n) {
+    let pos = [];
+    let neg = [];
+    let result = [];
+    for (let i = 0; i < n; i++) {
+        if (arr[i] >= 0) {
+            pos.push(arr[i]);
+        } else {
+            neg.push(arr[i]);
+        }
+    }
+    let i = 0; 
+    let j = 0; 
+    while (i < pos.length && j < neg.length) {
+        result.push(pos[i]);
+        result.push(neg[j]);
+        i++;
+        j++;
+    }
+    while (i < pos.length) {
+        result.push(pos[i]);
+        i++
+    }
+    while (j < neg.length) {
+        result.push(neg[j]);
+        j++
+    }
+    return result;
+}
 
-var reverseWords = function(s) {
-    return s.split(' ').map((val) => val.split('').reverse().join('')).join(' ')
-};
-
-console.log(reverseWords('Mr Ding'));
+console.log(rearrange([9, 4, -2, -1, 5, 0, -5, -3, 2], 9));
