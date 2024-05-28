@@ -1,22 +1,30 @@
-// 1678. Goal Parser Interpretation
-// You own a Goal Parser that can interpret a string command. The command consists of an alphabet of "G", "()" and/or "(al)" in some order. The Goal Parser will interpret "G" as the string "G", "()" as the string "o", and "(al)" as the string "al". The interpreted strings are then concatenated in the original order.
-// Given the string command, return the Goal Parser's interpretation of command.
+// 1287. Element Appearing More Than 25% In Sorted Array
+// Given an integer array sorted in non-decreasing order, there is exactly one integer in the array that occurs more than 25% of the time, return that integer.
 // Example 1:
-// Input: command = "G()(al)"
-// Output: "Goal"
-// Explanation: The Goal Parser interprets the command as follows:
-// G -> G
-// () -> o
-// (al) -> al
-// The final concatenated result is "Goal".
+// Input: arr = [1,2,2,6,6,6,6,7,10]
+// Output: 6
+// Example 2:
+// Input: arr = [1,1]
+// Output: 1
 
-var interpret = function(command) {
-    return command.replaceAll("()", 'o').replaceAll("(al)", "al");
+var findSpecialInteger = function(arr) {
+    let n = arr.length; 
+    let quarter = n  / 4;
+    let count = 1;
+    for (let i = 0; i < n; i++) {
+        if (arr[i] == arr[i - 1]) {
+            count++;
+        } else {
+            count = 1;
+        }
+        if (count > quarter) {
+            return arr[i];
+        }
+    }
+    return arr[0];
 };
 
-console.log(interpret("G()(al)"));
-
-
+console.log(findSpecialInteger([1,2,2,6,6,6,6,7,10]));
 
 
 
