@@ -1,30 +1,26 @@
-// 1287. Element Appearing More Than 25% In Sorted Array
-// Given an integer array sorted in non-decreasing order, there is exactly one integer in the array that occurs more than 25% of the time, return that integer.
+// 2710. Remove Trailing Zeros From a String
+// Given a positive integer num represented as a string, return the integer num without trailing zeros as a string.
 // Example 1:
-// Input: arr = [1,2,2,6,6,6,6,7,10]
-// Output: 6
-// Example 2:
-// Input: arr = [1,1]
-// Output: 1
+// Input: num = "51230100"
+// Output: "512301"
 
-var findSpecialInteger = function(arr) {
-    let n = arr.length; 
-    let quarter = n  / 4;
-    let count = 1;
-    for (let i = 0; i < n; i++) {
-        if (arr[i] == arr[i - 1]) {
-            count++;
-        } else {
-            count = 1;
-        }
-        if (count > quarter) {
-            return arr[i];
+
+var removeTrailingZeros = function(num) {
+    let lastNonZeroIndex = -1;
+    //travers from the end to the beginning of the string
+    for (let i = num.length - 1; i >= 0; i--) {
+        if (num[i] !== '0') {
+            lastNonZeroIndex = i;
+            break;
         }
     }
-    return arr[0];
+    //if all characters are zero, return 0;
+    return num.slice(0, lastNonZeroIndex + 1);
+    // return the substring from the start to the position of the last non-zero character
+    
 };
 
-console.log(findSpecialInteger([1,2,2,6,6,6,6,7,10]));
+console.log(removeTrailingZeros("51230100"));
 
 
 
