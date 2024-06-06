@@ -1,26 +1,18 @@
-// 2710. Remove Trailing Zeros From a String
-// Given a positive integer num represented as a string, return the integer num without trailing zeros as a string.
+// 2535. Difference Between Element Sum and Digit Sum of an Array
 // Example 1:
-// Input: num = "51230100"
-// Output: "512301"
 
-
-var removeTrailingZeros = function(num) {
-    let lastNonZeroIndex = -1;
-    //travers from the end to the beginning of the string
-    for (let i = num.length - 1; i >= 0; i--) {
-        if (num[i] !== '0') {
-            lastNonZeroIndex = i;
-            break;
-        }
-    }
-    //if all characters are zero, return 0;
-    return num.slice(0, lastNonZeroIndex + 1);
-    // return the substring from the start to the position of the last non-zero character
-    
+// Input: nums = [1,15,6,3]
+// Output: 9
+// Explanation: 
+// The element sum of nums is 1 + 15 + 6 + 3 = 25.
+// The digit sum of nums is 1 + 1 + 5 + 6 + 3 = 16.
+// The absolute difference between the element sum and digit sum is |25 - 16| = 9.
+``
+var differenceOfSum = function(nums) {
+  let elementSum = nums.reduce((a, b) => Number(a) + Number(b));
+  let digitArr = nums.join('').split('');
+  let digitSum = digitArr.reduce((c, d) => Number(c) + Number(d));
+  return elementSum >= digitSum ? elementSum - digitSum : digitSum - elementSum; 
 };
 
-console.log(removeTrailingZeros("51230100"));
-
-
-
+console.log(differenceOfSum([1,15,6,3]));
