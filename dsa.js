@@ -1,20 +1,23 @@
+// 45. Jump Game II
 // Example 1:
 
-// Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
-// Output: [1,2,2,3,5,6]
+// Input: nums = [2,3,1,1,4]
+// Output: 2
+// Explanation: The minimum number of jumps to reach the last index is 2. Jump 1 step from index 0 to 1, then 3 steps to the last index.
 
 
-var merge = function(nums1, m, nums2, n) {
-  let j = 0;
-  for (let i = nums1.length; i >= m; i--) {
-    if (nums1[i] == '0') {
-      nums1.splice(i, 1);
-      nums1.push(nums2[j]);
-      j++;
+var jump = function(nums) {
+    let jumps = 0;
+    let currEnd = 0;
+    let farthest = 0;
+    for (let i = 0; i < nums.length - 1; i++) {
+        farthest = Math.max(farthest, i + nums[i]);
+        if (i === currEnd) {
+            jumps++;
+            currEnd = farthest;
+        }
     }
-  }
-  return nums1.sort();
+    return jumps;
 };
 
-
-console.log(merge([1,2,3,0,0,0],3,[2,5,6],3))
+console.log(jump([2,3,1,1,4]))
